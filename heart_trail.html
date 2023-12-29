@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Heart Animation</title>
+        <style>
+            body{
+                background-color: black;
+                height: 100vh;
+                overflow: hidden;
+            }
+            span{
+                background: url("https://cdn4.iconfinder.com/data/icons/general-office/91/General_Office_54-128.png");
+                position: absolute;
+                width: 100px;
+                pointer-events: none;
+                height: 100px;
+                background-size:contain;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                animation: animate 10s linear;
+            }
+            @keyframes animate {
+                0%{
+                    transform: translate(-50%,-50%);
+                    opacity: 1;
+                }
+                100%{
+                    transform: translate(-50%,-10000%);
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+    </body>
+
+    <script>
+
+        let body=document.querySelector("body");
+        body.addEventListener('mousemove',(event)=>{
+            const xpos=event.offsetX;
+            const ypos=event.offsetY;
+            const span=document.createElement("span");
+            let size=Math.random()*50;
+            span.style.height=size+"px";
+            span.style.width=size+"px";
+            span.style.left=xpos+"px";
+            span.style.top=(ypos)+ "px";
+            body.appendChild(span);
+
+            setTimeout(()=>{
+                body.removeChild(span);
+            },700);
+        });
+
+    </script>
+</html>
